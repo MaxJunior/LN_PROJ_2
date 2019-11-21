@@ -1,0 +1,32 @@
+Lingua Natural 
+Mini-Projecto 2 - Morphological Analyzer
+
+Grupo 11
+Ricardo Ventura - 79031
+Maxwell Junior - 79457
+
+A pasta inicial tem o ficheiro run.sh com os comandos para compilar e correr todos os transducers, 
+assim como para desenhar cada transducer pedido.
+
+  - /FINALtransducers contém os transducers pedidos em a), b) e c);
+    
+  - /FINALpdf contém os pdfs com os desenhos correspondentes;
+    
+  - /FINALexamples contém os transducers corrrespondentes aos resultados de testar lemma2verb.fst, lemma2word.fst e word2lemma.fst;
+    
+  - /TESTES contem apenas os ficheiros .txt com os testes escolhidos por nós para testar os transducers.
+    
+    
+Para a criação dos transducers da alínea b), utilizámos a função "fstunion" de maneira a unir os transducers feitos anteriormente e cobrir todos os casos possiveis de cada um, num só transducer.
+
+ - lemma2verb.fst resulta da união de lemma2verbip.fst, lemma2verbis.fst e lemma2verbif.fst  
+ 
+ - lemma2word.fst  resulta da união de todos os transducers feitos em a) de maneira a conseguir obter tanto nomes, como verbos e advérvios.
+    
+Para o transducer pedido em c), word2lemma.fst, decidimos fazer o invert de todos os transducers usados em a) e depois fazer a união de todos. Desta forma, conseguimos obter a operação inversa ao lemma2word.fst, aceitando uma palavra e devolvendo o respectivo lema, seguidos das tags.
+É de notar que neste caso é possivel o transducer receber palavras ambiguas, ou seja, que podem ser classificadas com mais do que uma tag entre nomes, verbos e advérvios. Assim, ao receber uma palavra ambigua, como por exemplo "aluna", o transducer produz duas alternativas de aceitação:
+    - "rato" é um nome, masculino do singular
+    - "rato" é um verbo, conjugado no presente do indicativo da primeira pessoa do singular do verbo "ratar"
+
+
+Para obter os resultados, correr o script com ./run.sh na linha de comandos.
